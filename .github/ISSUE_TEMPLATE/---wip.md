@@ -1,5 +1,5 @@
 ---
-name: "⚙️ Wip"
+name: "⚙️ WiP"
 about: Завдання по теперішньому етапу розробки.
 title: ''
 labels: WiP
