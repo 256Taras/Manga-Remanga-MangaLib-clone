@@ -1,6 +1,58 @@
 {
   "version": 2,
   "projects": {
+    "frontend-admin": {
+      "root": "apps/frontend/admin",
+      "sourceRoot": "apps/frontend/admin",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/next:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "root": "apps/frontend/admin",
+            "outputPath": "dist/apps/frontend/admin"
+          },
+          "configurations": {
+            "production": {}
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/next:server",
+          "options": {
+            "buildTarget": "frontend-admin:build",
+            "dev": true,
+            "port": 4201
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "frontend-admin:build:production",
+              "dev": false
+            }
+          }
+        },
+        "export": {
+          "executor": "@nrwl/next:export",
+          "options": {
+            "buildTarget": "frontend-admin:build:production"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/frontend/admin"],
+          "options": {
+            "jestConfig": "apps/frontend/admin/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/frontend/admin/**/*.{ts,tsx,js,jsx}"]
+          }
+        }
+      }
+    },
     "frontend-client": {
       "root": "apps/frontend/client",
       "sourceRoot": "apps/frontend/client",
@@ -21,7 +73,8 @@
           "executor": "@nrwl/next:server",
           "options": {
             "buildTarget": "frontend-client:build",
-            "dev": true
+            "dev": true,
+            "port": 4200
           },
           "configurations": {
             "production": {
@@ -48,6 +101,32 @@
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/frontend/client/**/*.{ts,tsx,js,jsx}"]
+          }
+        }
+      }
+    },
+    "frontend/admin-e2e": {
+      "root": "apps/frontend/admin-e2e",
+      "sourceRoot": "apps/frontend/admin-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/frontend/admin-e2e/cypress.json",
+            "tsConfig": "apps/frontend/admin-e2e/tsconfig.e2e.json",
+            "devServerTarget": "frontend-admin:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "frontend-admin:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/frontend/admin-e2e/**/*.{js,ts}"]
           }
         }
       }

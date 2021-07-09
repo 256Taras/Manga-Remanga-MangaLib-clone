@@ -13,9 +13,15 @@
             "allow": [],
             "depConstraints": [
               {
+                "sourceTag": "scope:frontend-client",
+                "onlyDependOnLibsWithTags": ["scope:frontend-client"]
+              },       {
+                "sourceTag": "scope:frontend-admin",
+                "onlyDependOnLibsWithTags": ["scope:frontend-admin"]
+              },       {
                 "sourceTag": "*",
                 "onlyDependOnLibsWithTags": ["*"]
-              }
+              },
             ]
           }
         ]
