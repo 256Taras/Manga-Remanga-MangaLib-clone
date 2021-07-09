@@ -31,7 +31,7 @@
       "tags": []
     },
     "frontend/client-e2e": {
-      "tags": [],
+      "tags": ["scope:frontend-client"],
       "implicitDependencies": ["frontend-client"]
     }
   }
