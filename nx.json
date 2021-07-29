@@ -27,11 +27,14 @@
     ]
   },
   "projects": {
+    "backend-api": {
+      "tags": ["scope:backend-api", "type:app"]
+    },
     "frontend-admin": {
-      "tags": ["scope:frontend-admin"]
+      "tags": ["scope:frontend-admin", "type:app"]
     },
     "frontend-client": {
-      "tags": ["scope:frontend-client"]
+      "tags": ["scope:frontend-client", "type:app"]
     },
     "frontend/admin-e2e": {
       "tags": [],
