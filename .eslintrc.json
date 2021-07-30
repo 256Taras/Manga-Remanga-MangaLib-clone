@@ -15,13 +15,18 @@
               {
                 "sourceTag": "scope:frontend-client",
                 "onlyDependOnLibsWithTags": ["scope:frontend-client"]
-              },       {
+              },
+              {
                 "sourceTag": "scope:frontend-admin",
                 "onlyDependOnLibsWithTags": ["scope:frontend-admin"]
+              },
+              {
+                "sourceTag": "scope:backend-api",
+                "onlyDependOnLibsWithTags": ["scope:backend-api"]
               },       {
                 "sourceTag": "*",
                 "onlyDependOnLibsWithTags": ["*"]
-              },
+              }
             ]
           }
         ]
