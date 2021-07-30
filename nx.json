@@ -30,6 +30,9 @@
     "backend-api": {
       "tags": ["scope:backend-api", "type:app"]
     },
+    "data-access-shared-root-store": {
+      "tags": []
+    },
     "frontend-admin": {
       "tags": ["scope:frontend-admin", "type:app"]
     },
