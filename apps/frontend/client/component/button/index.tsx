@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
 
-export const CustomButton = ({children}) => {
+export const CustomButton = ({ children }) => {
   return (
-    <button style={{color: "red"}}>
+    <button className='greenTestText'>
       {children}
     </button>
   );
