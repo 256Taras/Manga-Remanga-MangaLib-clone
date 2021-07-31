@@ -51,24 +51,24 @@
         }
       }
     },
-    "data-access-shared-root-store": {
-      "root": "libs/data-access/shared/root-store",
-      "sourceRoot": "libs/data-access/shared/root-store/src",
+    "data-access-frontend-shared-root-store": {
+      "root": "libs/data-access-frontend-shared-root-store",
+      "sourceRoot": "libs/data-access-frontend-shared-root-store/src",
       "projectType": "library",
       "targets": {
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/data-access/shared/root-store/**/*.{ts,tsx,js,jsx}"
+              "libs/data-access-frontend-shared-root-store/**/*.{ts,tsx,js,jsx}"
             ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/data-access/shared/root-store"],
+          "outputs": ["coverage/libs/data-access-frontend-shared-root-store"],
           "options": {
-            "jestConfig": "libs/data-access/shared/root-store/jest.config.js",
+            "jestConfig": "libs/data-access-frontend-shared-root-store/jest.config.js",
             "passWithNoTests": true
           }
         }

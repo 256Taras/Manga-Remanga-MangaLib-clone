@@ -1,1 +1,1 @@
-export * from './lib/data-access-shared-root-store';
+export * from './lib/root-store.module'

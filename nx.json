@@ -30,15 +30,16 @@
     "backend-api": {
       "tags": ["scope:backend-api", "type:app"]
     },
-    "data-access-shared-root-store": {
-      "tags": []
-    },
     "frontend-admin": {
       "tags": ["scope:frontend-admin", "type:app"]
     },
     "frontend-client": {
       "tags": ["scope:frontend-client", "type:app"]
     },
+    "data-access-frontend-shared-root-store": {
+      "tags": ["type:lib", "scope:shared", "lib-type:data-access"]
+    },
+
     "frontend/admin-e2e": {
       "tags": [],
       "implicitDependencies": ["frontend-admin"]

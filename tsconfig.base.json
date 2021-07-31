@@ -15,8 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@manga/data-access/shared/root-store": [
-        "libs/data-access/shared/root-store/src/index.ts"
+      "@manga/data-access/frontend/shared/root-store": [
+        "libs/data-access/frontend/shared/root-store/src/index.ts"
       ]
     }
   },
