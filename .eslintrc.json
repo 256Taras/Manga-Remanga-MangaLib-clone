@@ -13,19 +13,56 @@
             "allow": [],
             "depConstraints": [
               {
+              "sourceTag": "scope:backend-api",
+              "onlyDependOnLibsWithTags": [
+                "scope:backend-api",
+                "type:lib",
+                "scope:shared"
+              ]
+              },
+              {
                 "sourceTag": "scope:frontend-client",
-                "onlyDependOnLibsWithTags": ["scope:frontend-client"]
+                "onlyDependOnLibsWithTags": [
+                  "scope:frontend-client",
+                  "type:lib",
+                  "scope:shared"
+                ]
               },
               {
-                "sourceTag": "scope:frontend-admin",
-                "onlyDependOnLibsWithTags": ["scope:frontend-admin"]
+                "sourceTag": "scope:fronend-admin",
+                "onlyDependOnLibsWithTags": [
+                  "scope:fronend-admin",
+                  "type:lib"
+                ]
               },
               {
-                "sourceTag": "scope:backend-api",
-                "onlyDependOnLibsWithTags": ["scope:backend-api"]
-              },       {
-                "sourceTag": "*",
-                "onlyDependOnLibsWithTags": ["*"]
+                "sourceTag": "lib-type:feature",
+                "onlyDependOnLibsWithTags": [
+                  "lib-type:data-access",
+                  "lib-type:utils",
+                  "lib-type:feature",
+                  "lib-type:ui"
+                ]
+              },
+              {
+                "sourceTag": "lib-type:ui",
+                "onlyDependOnLibsWithTags": [
+                  "lib-type:ui",
+                  "lib-type:utils"
+                ]
+              },
+              {
+                "sourceTag": "lib-type:data-access",
+                "onlyDependOnLibsWithTags": [
+                  "lib-type:data-access",
+                  "lib-type:utils"
+                ]
+              },
+              {
+                "sourceTag": "lib-type:utils",
+                "onlyDependOnLibsWithTags": [
+                  "lib-type:utils"
+                ]
               }
             ]
           }
@@ -35,7 +72,9 @@
     {
       "files": ["*.ts", "*.tsx"],
       "extends": ["plugin:@nrwl/nx/typescript"],
-      "rules": {}
+      "rules": {
+
+      }
     },
     {
       "files": ["*.js", "*.jsx"],

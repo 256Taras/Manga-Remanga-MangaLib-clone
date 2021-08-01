@@ -3,5 +3,6 @@ module.exports = {
     '<rootDir>/apps/frontend/client',
     '<rootDir>/apps/frontend/admin',
     '<rootDir>/apps/backend/api',
+    '<rootDir>/libs/data-access/shared/root-store',
   ],
 };

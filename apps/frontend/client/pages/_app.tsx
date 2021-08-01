@@ -1,7 +1,13 @@
+
+
+
 import { AppProps } from 'next/app';
 import Head from 'next/head';
+
+
 import { ReactComponent as NxLogo } from '../public/nx-logo-white.svg';
 import '../styles/styles.scss';
+import { reduxNextWrapper } from '../store';
 
 function CustomApp({ Component, pageProps }: AppProps) {
   return (
@@ -22,4 +28,8 @@ function CustomApp({ Component, pageProps }: AppProps) {
   );
 }
 
-export default CustomApp;
+
+
+
+
+export default reduxNextWrapper.withRedux(CustomApp);

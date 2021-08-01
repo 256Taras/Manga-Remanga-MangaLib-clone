@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@manga/data-access/frontend/shared/root-store": [
+        "libs/data-access/frontend/shared/root-store/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
