@@ -1,9 +1,8 @@
-import createSagaMiddleware  from 'redux-saga';
-import {  combineReducers, configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import createSagaMiddleware from 'redux-saga';
+import { combineReducers, configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 
 import { ISagaStore } from './interfaces/saga-store.interface';
-import {rootSagaWrapper} from './root-saga';
-
+import { rootSagaWrapper } from './root-saga';
 
 
 /**
@@ -13,7 +12,12 @@ import {rootSagaWrapper} from './root-saga';
 /**
  * Get array sagas and collection object reducers
  */
-export function rootStoreModule({ sagas, reducers }: any) {
+
+
+
+
+//ts-ignore
+export function rootStoreModule({ sagas, reducers }: any): any {
 
 
   /**
