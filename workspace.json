@@ -6,6 +6,16 @@
       "sourceRoot": "apps/backend/api/src",
       "projectType": "application",
       "targets": {
+        "compodoc": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx compodoc -p apps/backend/api/tsconfig.app.json --theme vagrant -d documentation/backend/api"
+              }
+            ]
+          }
+        },
         "build": {
           "executor": "@nrwl/node:build",
           "outputs": [
@@ -89,6 +99,16 @@
       "sourceRoot": "apps/frontend/admin",
       "projectType": "application",
       "targets": {
+        "compodoc": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx compodoc -p apps/frontend/client/tsconfig.json --theme vagrant -d documentation/frontend/admin"
+              }
+            ]
+          }
+        },
         "build": {
           "executor": "@nrwl/next:build",
           "outputs": [
@@ -147,6 +167,16 @@
       "sourceRoot": "apps/frontend/client",
       "projectType": "application",
       "targets": {
+        "compodoc": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx compodoc -p apps/frontend/client/tsconfig.json --theme vagrant -d documentation/frontend/client"
+              }
+            ]
+          }
+        },
         "build": {
           "executor": "@nrwl/next:build",
           "outputs": [
