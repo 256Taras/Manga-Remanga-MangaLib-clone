@@ -27,6 +27,6 @@ jobs:
         uses: crazy-max/ghaction-github-pages@v2
         with:
           target_branch: gh-pages
-          build_dir: docs
+          build_dir: documentation
         env:
           GITHUB_TOKEN: ${{ secrets.REPOSITORY_MEAN }}
