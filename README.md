@@ -8,7 +8,7 @@ This project was generated using [Nx](https://nx.dev).
 # The MangaApp project includes
 - backend-api server
 - PostgreSQL db
-- frontend client app
+- frontend client 
 - frontend admin app
 - a set of libraries
 
@@ -21,3 +21,8 @@ This project was generated using [Nx](https://nx.dev).
 • [NextJs](https://nextjs.org/)
 • [Redux-Toolkit](https://redux-toolkit.js.org/)
 • [Redux-Saga](https://redux-saga.js.org/)
+
+
+### Tags
+
+v.0.1.0 init workspace 
