@@ -47,6 +47,8 @@
     "@reduxjs/toolkit": "^1.6.1",
     "@types/passport-local": "^1.0.34",
     "@types/redux-saga": "^0.10.5",
+    "class-transformer": "^0.4.0",
+    "class-validator": "^0.13.1",
     "core-js": "^3.6.5",
     "document-register-element": "1.13.1",
     "next": "10.2.0",
