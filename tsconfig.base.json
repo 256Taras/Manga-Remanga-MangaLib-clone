@@ -17,6 +17,9 @@
     "paths": {
       "@manga/data-access/frontend/shared/root-store": [
         "libs/data-access/frontend/shared/root-store/src/index.ts"
+      ],
+      "@manga/data-access/shared/interfaces": [
+        "libs/data-access/shared/interfaces/src/index.ts"
       ]
     }
   },

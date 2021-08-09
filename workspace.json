@@ -84,6 +84,27 @@
         }
       }
     },
+    "data-access-shared-interfaces": {
+      "root": "libs/data-access/shared/interfaces",
+      "sourceRoot": "libs/data-access/shared/interfaces/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/data-access/shared/interfaces/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/data-access/shared/interfaces"],
+          "options": {
+            "jestConfig": "libs/data-access/shared/interfaces/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "frontend-admin": {
       "root": "apps/frontend/admin",
       "sourceRoot": "apps/frontend/admin",
