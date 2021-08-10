@@ -5,6 +5,7 @@ import { Request } from 'express';
 
 import { environment } from '../../../environments/environment';
 import { UserService } from '../../users/services/user.service';
+import { ITokenPayload } from '../interfaces/token-payload.interface';
 
 /**
  * Implements interaction with standard passport-jwt methods
@@ -29,8 +30,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
    * Return validate data
    * @param payload
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  async validate(payload: any) {
+  public async validate(payload: ITokenPayload) {
     return this.userService.findOneById(payload.userId);
   }
 }

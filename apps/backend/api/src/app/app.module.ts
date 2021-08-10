@@ -12,9 +12,8 @@ import { UsersModule } from './users/users.module';
     TypeOrmModule.forRoot({
       ...environment.databaseConnection
     }),
-
     AuthModule,
-    UsersModule
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService]

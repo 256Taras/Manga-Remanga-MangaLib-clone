@@ -1,11 +1,14 @@
 import { HttpStatus, Inject, Injectable } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
+import { HttpException } from '@nestjs/common/exceptions/http.exception';
 
+import { IUser } from '@manga/data-access/shared/interfaces';
 import { IPasswordService } from '../interfaces/password-service.interface';
 import { PASSWORD_SERVICE } from '../utils/auth.constants';
-import { HttpException } from '@nestjs/common/exceptions/http.exception';
 import { UserService } from '../../users/services/user.service';
 import { RegisterCandidateDto } from '../dtos/register-candidate.dto';
-import { IUser } from '@manga/data-access/shared/interfaces';
+import { ITokenPayload } from '../interfaces/token-payload.interface';
+import { environment } from '../../../environments/environment';
 
 enum PostgresErrorCode {
   UniqueViolation = '23505'
@@ -16,7 +19,8 @@ export class AuthService {
   constructor(
     @Inject(PASSWORD_SERVICE)
     private readonly passwordService: IPasswordService,
-    private readonly userService: UserService
+    private readonly userService: UserService,
+    private readonly jwtService: JwtService,
   ) {
   }
 
@@ -80,6 +84,13 @@ export class AuthService {
     }
   }
 
+  public getCookieWithJwtToken(userId: number):string {
+    const payload: ITokenPayload = { userId };
+    const token = this.jwtService.sign(payload);
+    return `Authentication=${token}; HttpOnly; Path=/; Max-Age=${environment.jwt.expiresIn}`;
+  }
 }
+
+
 
 
