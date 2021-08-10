@@ -1,8 +1,10 @@
 import * as crypto from 'crypto';
 import { Injectable } from '@nestjs/common';
 
+import { IPasswordService } from '../interfaces/password-service.interface';
+
 @Injectable()
-export class PasswordService {
+export class PasswordService implements IPasswordService{
   private saltRounds = 10;
   private keyLength = 64;
 

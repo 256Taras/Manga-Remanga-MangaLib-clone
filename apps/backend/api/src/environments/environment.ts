@@ -6,6 +6,10 @@ export const environment = {
     autoLoadEntities: true,
     synchronize: true,
     logging: false,
-    dropSchema: false,
+    dropSchema: false
   },
+  jwt: {
+    secret: process.env['JWT_SECRET'],
+    expiresIn: Number(process.env['JWT_EXPIRES_IN'])
+  }
 };
