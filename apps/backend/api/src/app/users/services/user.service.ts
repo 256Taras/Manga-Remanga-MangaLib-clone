@@ -27,11 +27,15 @@ export class UserService {
     return `This action returns all users`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  public async findOneById(id: number) {
+    const user = await this.usersRepository.findOne({ id });
+    if (user) {
+      return user;
+    }
+    throw new HttpException(`User with id ${id} does not exist`, HttpStatus.NOT_FOUND);
   }
 
-  public async getByEmail(email: string): Promise<IUser | HttpException> {
+  public async getByEmail(email: string): Promise<IUser> {
     const user = await this.usersRepository.findOne({ email });
     if (user) {
       return user;

@@ -35,29 +35,48 @@ export class AuthService {
     } catch (error) {
 
       if (error?.code === PostgresErrorCode.UniqueViolation) {
+
         throw new HttpException('User with that email already exists', HttpStatus.BAD_REQUEST);
+
       }
       throw new HttpException('Something went wrong', HttpStatus.INTERNAL_SERVER_ERROR);
 
     }
   }
 
-
-  public async getAuthenticatedUser(email: string, plainTextPassword: string) {
+  /**
+   *
+   * @param email - user email
+   * @param plainTextPassword - hashed password
+   */
+  public async getAuthenticatedUser(email: string, plainTextPassword: string): Promise<IUser> {
     try {
-      const user = await this.userService.getByEmail(email);
+
+      const user: IUser = await this.userService.getByEmail(email);
+
+      /**
+       * if hash password and user password int match then error
+       */
       await this.verifyPassword(plainTextPassword, user.password);
+
       delete user.password;
+
       return user;
+
     } catch (error) {
+
       throw new HttpException('Wrong credentials provided', HttpStatus.BAD_REQUEST);
     }
   }
 
   private async verifyPassword(plainTextPassword: string, hashedPassword: string) {
+
     const isPasswordMatching = await this.passwordService.compareHash(plainTextPassword, hashedPassword);
+
     if (!isPasswordMatching) {
+
       throw new HttpException('Wrong credentials provided', HttpStatus.BAD_REQUEST);
+
     }
   }
 
