@@ -6,14 +6,18 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { environment } from '../environments/environment';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
+import { User } from './users/entities/user.entity';
+
+
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      ...environment.databaseConnection
-    }),
+     TypeOrmModule.forRoot({
+       ...environment.databaseConnection,
+       entities:[User]
+     }),
     AuthModule,
-    UsersModule,
+    UsersModule
   ],
   controllers: [AppController],
   providers: [AppService]

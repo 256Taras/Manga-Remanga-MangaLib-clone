@@ -20,7 +20,7 @@ export class AuthService {
     @Inject(PASSWORD_SERVICE)
     private readonly passwordService: IPasswordService,
     private readonly userService: UserService,
-    private readonly jwtService: JwtService,
+    private readonly jwtService: JwtService
   ) {
   }
 
@@ -73,7 +73,7 @@ export class AuthService {
     }
   }
 
-  private async verifyPassword(plainTextPassword: string, hashedPassword: string) {
+  private async verifyPassword(plainTextPassword: string, hashedPassword: string): Promise<void> {
 
     const isPasswordMatching = await this.passwordService.compareHash(plainTextPassword, hashedPassword);
 
@@ -84,10 +84,19 @@ export class AuthService {
     }
   }
 
-  public getCookieWithJwtToken(userId: number):string {
+  public getCookieWithJwtToken(userId: number): string {
+
     const payload: ITokenPayload = { userId };
+
     const token = this.jwtService.sign(payload);
+
     return `Authentication=${token}; HttpOnly; Path=/; Max-Age=${environment.jwt.expiresIn}`;
+  }
+
+  public getCookieForLogOut(): string {
+
+    return `Authentication=; HttpOnly; Path=/; Max-Age=0`;
+
   }
 }
 
