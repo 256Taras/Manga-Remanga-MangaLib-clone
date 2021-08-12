@@ -1,14 +1,15 @@
 import { HttpStatus, Inject, Injectable } from '@nestjs/common';
-import { CreateUserDto } from '../dtos/create-user.dto';
-import { UpdateUserDto } from '../dtos/update-user.dto';
-import { USER_REPOSITORY } from '../utils/user.constants';
 import { Repository } from 'typeorm';
 import { User } from '../entities/user.entity';
 import { HttpException } from '@nestjs/common/exceptions/http.exception';
+
+import { CreateUserDto } from '../dtos/create-user.dto';
+import { USER_REPOSITORY } from '../utils/user.constants';
 import { IUser } from '@manga/data-access/shared/interfaces';
 
 @Injectable()
 export class UserService {
+
 
   constructor(
     @Inject(USER_REPOSITORY)
@@ -44,11 +45,15 @@ export class UserService {
   }
 
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  public async update(id: number, user: Partial<IUser>) {
+
+    return this.usersRepository.update(id, user);
+
   }
 
   remove(id: number) {
     return `This action removes a #${id} user`;
   }
+
+
 }

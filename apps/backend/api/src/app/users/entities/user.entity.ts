@@ -24,8 +24,8 @@ export class User implements IUser {
     this.email = this.email.toLowerCase();
   }
 
-  @Column()
-  public imgUrl: string;
+  @Column({ default: null })
+  public imgUrl?: string;
 
   @Column('boolean', { default: false })
   public isOnline: boolean;
