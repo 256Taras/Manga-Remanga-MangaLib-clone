@@ -9,7 +9,9 @@ export const environment = {
     dropSchema: false
   },
   jwt: {
-    secret: process.env['JWT_SECRET'],
-    expiresIn: Number(process.env['JWT_EXPIRES_IN'])
+    accessTokenSecrete: process.env['JWT_ACCESS_TOKEN_SECRET'],
+    expiresInAccessToken: Number(process.env['JWT_ACCESS_TOKEN_EXPIRATION_TIME']),
+    refreshTokenSecret: process.env['JWT_REFRESH_TOKEN_SECRET'],
+    expiresInRefreshToken:Number(process.env['JWT_REFRESH_TOKEN_SECRET']),
   }
 };
