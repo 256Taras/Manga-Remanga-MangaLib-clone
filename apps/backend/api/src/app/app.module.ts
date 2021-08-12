@@ -12,10 +12,10 @@ import { User } from './users/entities/user.entity';
 
 @Module({
   imports: [
-     TypeOrmModule.forRoot({
-       ...environment.databaseConnection,
-       entities:[User]
-     }),
+    TypeOrmModule.forRoot({
+      ...environment.databaseConnection,
+      entities:[User]
+    }),
     AuthModule,
     UsersModule
   ],

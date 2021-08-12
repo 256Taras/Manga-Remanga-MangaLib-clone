@@ -33,9 +33,9 @@ export interface IUser {
   gender: UserGender;
 
   /**
-   * user image link URL
+   * user image link URL (option)
    */
-  imgUrl: string;
+  imgUrl?: string;
 
   /**
    * user is online flag
