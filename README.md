@@ -23,6 +23,15 @@ This project was generated using [Nx](https://nx.dev).
 • [Redux-Saga](https://redux-saga.js.org/)
 
 
+
+### Documentation & Quickstart
+
+[backend-api documentation](https://ezen1programmer.github.io/Manga-Nx-Next-Nest/backend/api/)
+
+[frontend-admin documentation](https://ezen1programmer.github.io/Manga-Nx-Next-Nest/frontend/admin/)
+
+[frontend-client documentation](https://ezen1programmer.github.io/Manga-Nx-Next-Nest/frontend/client/)
+
 ### Tags
 
 v.0.1.0 init workspace 
