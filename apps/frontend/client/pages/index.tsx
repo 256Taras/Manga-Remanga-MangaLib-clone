@@ -10,7 +10,7 @@ export function Index() {
     dispatch(getUser());
   }, []);
 
- // const user = useSelector((state) => state);
+  // const user = useSelector((state) => state);
   return (
     <div>
       <pre>

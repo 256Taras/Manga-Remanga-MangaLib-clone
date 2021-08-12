@@ -6,6 +6,12 @@ export const environment = {
     autoLoadEntities: true,
     synchronize: true,
     logging: false,
-    dropSchema: false,
+    dropSchema: false
   },
+  jwt: {
+    accessTokenSecrete: process.env['JWT_ACCESS_TOKEN_SECRET'],
+    expiresInAccessToken: Number(process.env['JWT_ACCESS_TOKEN_EXPIRATION_TIME']),
+    refreshTokenSecret: process.env['JWT_REFRESH_TOKEN_SECRET'],
+    expiresInRefreshToken:Number(process.env['JWT_REFRESH_TOKEN_SECRET']),
+  }
 };

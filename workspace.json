@@ -7,7 +7,7 @@
       "projectType": "application",
       "targets": {
         "compodoc": {
-          "builder": "@nrwl/workspace:run-commands",
+          "executor": "@nrwl/workspace:run-commands",
           "options": {
             "commands": [
               {
@@ -18,16 +18,12 @@
         },
         "build": {
           "executor": "@nrwl/node:build",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/backend/api",
             "main": "apps/backend/api/src/main.ts",
             "tsConfig": "apps/backend/api/tsconfig.app.json",
-            "assets": [
-              "apps/backend/api/src/assets"
-            ]
+            "assets": ["apps/backend/api/src/assets"]
           },
           "configurations": {
             "production": {
@@ -52,16 +48,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/backend/api/**/*.ts"
-            ]
+            "lintFilePatterns": ["apps/backend/api/**/*.ts"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/backend/api"
-          ],
+          "outputs": ["coverage/apps/backend/api"],
           "options": {
             "jestConfig": "apps/backend/api/jest.config.js",
             "passWithNoTests": true
@@ -84,11 +76,30 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/data-access-frontend-shared-root-store"
-          ],
+          "outputs": ["coverage/libs/data-access-frontend-shared-root-store"],
           "options": {
             "jestConfig": "libs/data-access-frontend-shared-root-store/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "data-access-shared-interfaces": {
+      "root": "libs/data-access/shared/interfaces",
+      "sourceRoot": "libs/data-access/shared/interfaces/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/data-access/shared/interfaces/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/data-access/shared/interfaces"],
+          "options": {
+            "jestConfig": "libs/data-access/shared/interfaces/jest.config.js",
             "passWithNoTests": true
           }
         }
@@ -100,7 +111,7 @@
       "projectType": "application",
       "targets": {
         "compodoc": {
-          "builder": "@nrwl/workspace:run-commands",
+          "executor": "@nrwl/workspace:run-commands",
           "options": {
             "commands": [
               {
@@ -111,9 +122,7 @@
         },
         "build": {
           "executor": "@nrwl/next:build",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "root": "apps/frontend/admin",
             "outputPath": "dist/apps/frontend/admin"
@@ -144,9 +153,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/frontend/admin"
-          ],
+          "outputs": ["coverage/apps/frontend/admin"],
           "options": {
             "jestConfig": "apps/frontend/admin/jest.config.js",
             "passWithNoTests": true
@@ -155,9 +162,7 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/frontend/admin/**/*.{ts,tsx,js,jsx}"
-            ]
+            "lintFilePatterns": ["apps/frontend/admin/**/*.{ts,tsx,js,jsx}"]
           }
         }
       }
@@ -168,7 +173,7 @@
       "projectType": "application",
       "targets": {
         "compodoc": {
-          "builder": "@nrwl/workspace:run-commands",
+          "executor": "@nrwl/workspace:run-commands",
           "options": {
             "commands": [
               {
@@ -179,9 +184,7 @@
         },
         "build": {
           "executor": "@nrwl/next:build",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "root": "apps/frontend/client",
             "outputPath": "dist/apps/frontend/client"
@@ -212,9 +215,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/frontend/client"
-          ],
+          "outputs": ["coverage/apps/frontend/client"],
           "options": {
             "jestConfig": "apps/frontend/client/jest.config.js",
             "passWithNoTests": true
@@ -223,9 +224,7 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/frontend/client/**/*.{ts,tsx,js,jsx}"
-            ]
+            "lintFilePatterns": ["apps/frontend/client/**/*.{ts,tsx,js,jsx}"]
           }
         }
       }
@@ -251,9 +250,7 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/frontend/admin-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/frontend/admin-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -279,9 +276,7 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/frontend/client-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/frontend/client-e2e/**/*.{js,ts}"]
           }
         }
       }

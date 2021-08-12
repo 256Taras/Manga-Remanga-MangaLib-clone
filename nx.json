@@ -14,12 +14,7 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e"
-        ]
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
       }
     }
   },
@@ -33,43 +28,27 @@
   },
   "projects": {
     "backend-api": {
-      "tags": [
-        "scope:backend-api",
-        "type:app"
-      ]
+      "tags": ["scope:backend-api", "type:app"]
     },
     "data-access-frontend-shared-root-store": {
-      "tags": [
-        "type:lib",
-        "scope:shared",
-        "lib-type:data-access"
-      ]
+      "tags": ["type:lib", "scope:shared", "lib-type:data-access"]
+    },
+    "data-access-shared-interfaces": {
+      "tags": ["type:lib", "scope:shared", "lib-type:data-access"]
     },
     "frontend-admin": {
-      "tags": [
-        "scope:frontend-admin",
-        "type:app"
-      ]
+      "tags": ["scope:frontend-admin", "type:app"]
     },
     "frontend-client": {
-      "tags": [
-        "scope:frontend-client",
-        "type:app"
-      ]
+      "tags": ["scope:frontend-client", "type:app"]
     },
     "frontend/admin-e2e": {
       "tags": [],
-      "implicitDependencies": [
-        "frontend-admin"
-      ]
+      "implicitDependencies": ["frontend-admin"]
     },
     "frontend/client-e2e": {
-      "tags": [
-        "scope:frontend-client"
-      ],
-      "implicitDependencies": [
-        "frontend-client"
-      ]
+      "tags": ["scope:frontend-client"],
+      "implicitDependencies": ["frontend-client"]
     }
   }
 }

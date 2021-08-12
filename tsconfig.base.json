@@ -10,21 +10,18 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": [
-      "es2017",
-      "dom"
-    ],
+    "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
       "@manga/data-access/frontend/shared/root-store": [
         "libs/data-access/frontend/shared/root-store/src/index.ts"
+      ],
+      "@manga/data-access/shared/interfaces": [
+        "libs/data-access/shared/interfaces/src/index.ts"
       ]
     }
   },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ]
+  "exclude": ["node_modules", "tmp"]
 }
