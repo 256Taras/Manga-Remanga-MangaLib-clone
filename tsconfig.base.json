@@ -15,11 +15,14 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@manga/data-access/frontend/shared/root-store": [
-        "libs/data-access/frontend/shared/root-store/src/index.ts"
+      "@manga/data-access/frontend/shared/auth-store": [
+        "libs/data-access/frontend/shared/auth-store/src/index.ts"
       ],
       "@manga/data-access/shared/interfaces": [
         "libs/data-access/shared/interfaces/src/index.ts"
+      ],
+      "@manga/utils/frontend/shared/root-store": [
+        "libs/utils/frontend/shared/root-store/src/index.ts"
       ]
     }
   },

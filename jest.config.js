@@ -5,5 +5,7 @@ module.exports = {
     '<rootDir>/apps/backend/api',
     '<rootDir>/libs/data-access/shared/root-store',
     '<rootDir>/libs/data-access/shared/interfaces',
+    '<rootDir>/libs/utils/frontend/shared/root-store',
+    '<rootDir>/libs/data-access/frontend/shared',
   ],
 };

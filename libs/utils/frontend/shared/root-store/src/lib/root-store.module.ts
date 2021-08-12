@@ -12,8 +12,6 @@ import {
 
 import { ISagaStore } from './interfaces/saga-store.interface';
 import { rootSagaWrapper } from './root-saga';
-import { Saga } from '@redux-saga/types';
-import { ReducersMapObject } from 'redux';
 import { IRootStoreOption } from './interfaces/root-store-option.interface';
 
 
@@ -29,7 +27,7 @@ import { IRootStoreOption } from './interfaces/root-store-option.interface';
  */
 
 //ts-ignore
-export function rootStoreModule({ sagas, reducers }: IRootStoreOption):  EnhancedStore<any, Action<any>, Middleware<{}, any, Dispatch<AnyAction>>[]> {
+export function rootStoreModule({ sagas, reducers }: IRootStoreOption):  EnhancedStore< any, Action<any>, Middleware<Record<string, unknown>, any, Dispatch<AnyAction>>[]> {
 
 
   /**
