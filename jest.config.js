@@ -7,5 +7,7 @@ module.exports = {
     '<rootDir>/libs/data-access/shared/interfaces',
     '<rootDir>/libs/utils/frontend/shared/root-store',
     '<rootDir>/libs/data-access/frontend/shared',
+    '<rootDir>/libs/utils/shared/реез',
+    '<rootDir>/libs/utils/shared/http',
   ],
 };

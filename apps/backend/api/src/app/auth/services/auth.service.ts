@@ -2,7 +2,7 @@ import { HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { HttpException } from '@nestjs/common/exceptions/http.exception';
 
-import { IUser } from '@manga/data-access/shared/interfaces';
+import { IUser } from '@manga/utils/shared/interfaces';
 import { IPasswordService } from '../interfaces/password-service.interface';
 import { PASSWORD_SERVICE } from '../utils/auth.constants';
 import { UserService } from '../../users/services/user.service';
@@ -12,7 +12,7 @@ import { environment } from '../../../environments/environment';
 import { LoginUserDto } from '../dtos/login-user.dto';
 
 enum PostgresErrorCode {
-  UniqueViolation = '23505'
+  UniqueViolation = '23505',
 }
 
 @Injectable()
@@ -22,35 +22,39 @@ export class AuthService {
     private readonly passwordService: IPasswordService,
     private readonly userService: UserService,
     private readonly jwtService: JwtService
-  ) {
-  }
-
+  ) {}
 
   /**
    * @description - registration of a   for the position user
    */
 
-  public async register(candidateData: RegisterCandidateDto): Promise<Omit<IUser, 'password'>> {
+  public async register(
+    candidateData: RegisterCandidateDto
+  ): Promise<Omit<IUser, 'password'>> {
     try {
+      const hashedPassword = await this.passwordService.getHash(
+        candidateData.password
+      );
 
-      const hashedPassword = await this.passwordService.getHash(candidateData.password);
-
-      const createdUser = await this.userService.create({ ...candidateData, password: hashedPassword });
+      const createdUser = await this.userService.create({
+        ...candidateData,
+        password: hashedPassword,
+      });
 
       delete createdUser.password;
 
       return createdUser;
-
-
     } catch (error) {
-
       if (error?.code === PostgresErrorCode.UniqueViolation) {
-
-        throw new HttpException('User with that email already exists', HttpStatus.BAD_REQUEST);
-
+        throw new HttpException(
+          'User with that email already exists',
+          HttpStatus.BAD_REQUEST
+        );
       }
-      throw new HttpException('Something went wrong', HttpStatus.INTERNAL_SERVER_ERROR);
-
+      throw new HttpException(
+        'Something went wrong',
+        HttpStatus.INTERNAL_SERVER_ERROR
+      );
     }
   }
 
@@ -58,13 +62,16 @@ export class AuthService {
    * @param candidate - it's a person who is a candidate for user
    * @description - login candidate
    */
-  public async login(candidate: LoginUserDto): Promise<{ accessJwt: string, refreshJwt: string, user: IUser }> {
+  public async login(
+    candidate: LoginUserDto
+  ): Promise<{ accessJwt: string; refreshJwt: string; user: IUser }> {
     try {
-
-      const user: IUser = await this.getAuthenticatedUser(candidate.email, candidate.password);
+      const user: IUser = await this.getAuthenticatedUser(
+        candidate.email,
+        candidate.password
+      );
 
       if (user) {
-
         const refreshJwt = await this.getRefreshToken(user.id);
 
         const accessJwt = await this.getAccessToken(user.id);
@@ -74,9 +81,10 @@ export class AuthService {
         return { accessJwt, refreshJwt, user };
       }
     } catch (e) {
-
-      throw new HttpException('Something went wrong', HttpStatus.INTERNAL_SERVER_ERROR);
-
+      throw new HttpException(
+        'Something went wrong',
+        HttpStatus.INTERNAL_SERVER_ERROR
+      );
     }
   }
 
@@ -86,23 +94,24 @@ export class AuthService {
    * @param plainTextPassword - hashed password
    * @description - get  authenticated user  based on password
    */
-  public async getAuthenticatedUser(email: string, plainTextPassword: string): Promise<IUser> {
+  public async getAuthenticatedUser(
+    email: string,
+    plainTextPassword: string
+  ): Promise<IUser> {
     try {
-
       const user: IUser = await this.userService.getByEmail(email);
-
 
       await this.verifyPassword(plainTextPassword, user.password);
 
       delete user.password;
       delete user.refreshToken;
 
-
       return user;
-
     } catch (error) {
-
-      throw new HttpException('Wrong credentials provided', HttpStatus.BAD_REQUEST);
+      throw new HttpException(
+        'Wrong credentials provided',
+        HttpStatus.BAD_REQUEST
+      );
     }
   }
 
@@ -112,14 +121,20 @@ export class AuthService {
    * @description - compare user password and candidate password
    * @return {Promise<void>}
    */
-  private async verifyPassword(plainTextPassword: string, hashedPassword: string): Promise<void> {
-
-    const isPasswordMatching = await this.passwordService.compareHash(plainTextPassword, hashedPassword);
+  private async verifyPassword(
+    plainTextPassword: string,
+    hashedPassword: string
+  ): Promise<void> {
+    const isPasswordMatching = await this.passwordService.compareHash(
+      plainTextPassword,
+      hashedPassword
+    );
 
     if (!isPasswordMatching) {
-
-      throw new HttpException('Wrong credentials provided', HttpStatus.BAD_REQUEST);
-
+      throw new HttpException(
+        'Wrong credentials provided',
+        HttpStatus.BAD_REQUEST
+      );
     }
   }
 
@@ -133,7 +148,7 @@ export class AuthService {
     const payload: ITokenPayload = { userId };
     return this.jwtService.sign(payload, {
       secret: environment.jwt.accessTokenSecrete,
-      expiresIn: `${environment.jwt.expiresInAccessToken}m`
+      expiresIn: `${environment.jwt.expiresInAccessToken}m`,
     });
   }
 
@@ -147,7 +162,7 @@ export class AuthService {
     const payload: ITokenPayload = { userId };
     return this.jwtService.sign(payload, {
       secret: environment.jwt.refreshTokenSecret,
-      expiresIn: `${environment.jwt.expiresInRefreshToken}d`
+      expiresIn: `${environment.jwt.expiresInRefreshToken}d`,
     });
   }
 
@@ -158,9 +173,16 @@ export class AuthService {
    * @description - set current user hashed refresh token in database
    * @return {Promise<void>}
    */
-  public async setCurrentRefreshToken(refreshToken: string, userId: number): Promise<void> {
-    const currentHashedRefreshToken = await this.passwordService.getHash(refreshToken);
-    await this.userService.update(userId, { refreshToken: currentHashedRefreshToken });
+  public async setCurrentRefreshToken(
+    refreshToken: string,
+    userId: number
+  ): Promise<void> {
+    const currentHashedRefreshToken = await this.passwordService.getHash(
+      refreshToken
+    );
+    await this.userService.update(userId, {
+      refreshToken: currentHashedRefreshToken,
+    });
   }
 
   /**
@@ -169,7 +191,10 @@ export class AuthService {
    * @param userId - user id
    * @description - compare candidate  token and user hashed token
    */
-  public async getUserIfRefreshTokenMatches(refreshToken: string, userId: number): Promise<Omit<IUser, 'password'>> {
+  public async getUserIfRefreshTokenMatches(
+    refreshToken: string,
+    userId: number
+  ): Promise<Omit<IUser, 'password'>> {
     const user = await this.userService.findOneById(userId);
 
     const isRefreshTokenMatching = await this.passwordService.compareHash(
@@ -181,9 +206,4 @@ export class AuthService {
       return user;
     }
   }
-
 }
-
-
-
-

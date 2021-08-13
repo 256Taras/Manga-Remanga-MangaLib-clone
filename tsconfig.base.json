@@ -18,11 +18,12 @@
       "@manga/data-access/frontend/shared/auth-store": [
         "libs/data-access/frontend/shared/auth-store/src/index.ts"
       ],
-      "@manga/data-access/shared/interfaces": [
-        "libs/data-access/shared/interfaces/src/index.ts"
-      ],
       "@manga/utils/frontend/shared/root-store": [
         "libs/utils/frontend/shared/root-store/src/index.ts"
+      ],
+      "@manga/utils/shared/http": ["libs/utils/shared/http/src/index.ts"],
+      "@manga/utils/shared/interfaces": [
+        "libs/utils/shared/interfaces/src/index.ts"
       ]
     }
   },

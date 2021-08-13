@@ -5,18 +5,14 @@ import { HttpException } from '@nestjs/common/exceptions/http.exception';
 
 import { CreateUserDto } from '../dtos/create-user.dto';
 import { USER_REPOSITORY } from '../utils/user.constants';
-import { IUser } from '@manga/data-access/shared/interfaces';
+import { IUser } from '@manga/utils/shared/interfaces';
 
 @Injectable()
 export class UserService {
-
-
   constructor(
     @Inject(USER_REPOSITORY)
     private readonly usersRepository: Repository<User>
-  ) {
-  }
-
+  ) {}
 
   public async create(candidateData: CreateUserDto) {
     const candidate = await this.usersRepository.create(candidateData);
@@ -33,7 +29,10 @@ export class UserService {
     if (user) {
       return user;
     }
-    throw new HttpException(`User with id ${id} does not exist`, HttpStatus.NOT_FOUND);
+    throw new HttpException(
+      `User with id ${id} does not exist`,
+      HttpStatus.NOT_FOUND
+    );
   }
 
   public async getByEmail(email: string): Promise<IUser> {
@@ -41,19 +40,17 @@ export class UserService {
     if (user) {
       return user;
     }
-    throw new HttpException('User with this email does not exist', HttpStatus.NOT_FOUND);
+    throw new HttpException(
+      'User with this email does not exist',
+      HttpStatus.NOT_FOUND
+    );
   }
 
-
   public async update(id: number, user: Partial<IUser>) {
-
     return this.usersRepository.update(id, user);
-
   }
 
   remove(id: number) {
     return `This action removes a #${id} user`;
   }
-
-
 }

@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'data-access-shared-interfaces',
+  displayName: 'utils-shared-interfaces',
   preset: '../../../../jest.preset.js',
   globals: {
     'ts-jest': {
@@ -10,5 +10,5 @@ module.exports = {
     '^.+\\.[tj]sx?$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../../../coverage/libs/data-access/shared/interfaces',
+  coverageDirectory: '../../../../coverage/libs/utils/shared/interfaces',
 };

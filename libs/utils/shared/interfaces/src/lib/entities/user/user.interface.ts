@@ -6,7 +6,6 @@ import { UserGender } from './user-gender.enum';
  * provides an entity interface user
  */
 export interface IUser {
-
   /**
    * user ID
    */
@@ -56,5 +55,4 @@ export interface IUser {
    * user last update
    */
   updatedAt: Date;
-
 }

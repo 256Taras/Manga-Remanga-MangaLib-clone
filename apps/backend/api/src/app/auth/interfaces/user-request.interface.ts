@@ -1,5 +1,5 @@
-import { IUser } from '@manga/data-access/shared/interfaces';
+import { IUser } from '@manga/utils/shared/interfaces';
 
 export interface IUserRequest extends Request {
-  user: Omit<IUser, 'password'>
+  user: Omit<IUser, 'password'>;
 }
