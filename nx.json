@@ -33,6 +33,9 @@
     "data-access-frontend-shared-auth-store": {
       "tags": ["type:lib", "scope:shared", "lib-type:data-access"]
     },
+    "feature-frontend-shared-auth": {
+      "tags": []
+    },
     "frontend-admin": {
       "tags": ["scope:frontend-admin", "type:app"]
     },

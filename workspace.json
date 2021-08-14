@@ -84,6 +84,29 @@
         }
       }
     },
+    "feature-frontend-shared-auth": {
+      "root": "libs/feature/frontend/shared/auth",
+      "sourceRoot": "libs/feature/frontend/shared/auth/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/feature/frontend/shared/auth/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/feature/frontend/shared/auth"],
+          "options": {
+            "jestConfig": "libs/feature/frontend/shared/auth/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "frontend-admin": {
       "root": "apps/frontend/admin",
       "sourceRoot": "apps/frontend/admin",

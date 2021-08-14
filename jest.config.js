@@ -9,5 +9,6 @@ module.exports = {
     '<rootDir>/libs/data-access/frontend/shared',
     '<rootDir>/libs/utils/shared/реез',
     '<rootDir>/libs/utils/shared/http',
+    '<rootDir>/libs/feature/frontend/shared/auth',
   ],
 };
