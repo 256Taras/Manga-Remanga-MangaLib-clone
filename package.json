@@ -56,6 +56,7 @@
     "cookie-parser": "^1.4.5",
     "core-js": "^3.6.5",
     "document-register-element": "1.13.1",
+    "formik": "^2.2.9",
     "next": "10.2.0",
     "next-redux-wrapper": "^7.0.2",
     "passport": "^0.4.1",
