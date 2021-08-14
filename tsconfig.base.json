@@ -18,6 +18,9 @@
       "@manga/data-access/frontend/shared/auth-store": [
         "libs/data-access/frontend/shared/auth-store/src/index.ts"
       ],
+      "@manga/data-access/frontend/shared/users-store": [
+        "libs/data-access/frontend/shared/users-store/src/index.ts"
+      ],
       "@manga/feature/frontend/shared/auth": [
         "libs/feature/frontend/shared/auth/src/index.ts"
       ],

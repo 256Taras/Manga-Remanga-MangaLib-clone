@@ -84,6 +84,29 @@
         }
       }
     },
+    "data-access-frontend-shared-users-store": {
+      "root": "libs/data-access/frontend/shared/users-store",
+      "sourceRoot": "libs/data-access/frontend/shared/users-store/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/data-access/frontend/shared/users-store/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/data-access/frontend/shared/users-store"],
+          "options": {
+            "jestConfig": "libs/data-access/frontend/shared/users-store/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "feature-frontend-shared-auth": {
       "root": "libs/feature/frontend/shared/auth",
       "sourceRoot": "libs/feature/frontend/shared/auth/src",

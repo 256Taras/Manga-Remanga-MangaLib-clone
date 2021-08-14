@@ -10,5 +10,6 @@ module.exports = {
     '<rootDir>/libs/utils/shared/реез',
     '<rootDir>/libs/utils/shared/http',
     '<rootDir>/libs/feature/frontend/shared/auth',
+    '<rootDir>/libs/data-access/frontend/shared/user-store',
   ],
 };
