@@ -53,6 +53,9 @@
       "tags": ["scope:frontend-client"],
       "implicitDependencies": ["frontend-client"]
     },
+    "ui-auth": {
+      "tags": []
+    },
     "utils-frontend-shared-root-store": {
       "tags": ["scope:shared", "type:lib", "lib-type:utils"]
     },

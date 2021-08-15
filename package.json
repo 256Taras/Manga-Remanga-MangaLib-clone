@@ -72,7 +72,8 @@
     "regenerator-runtime": "0.13.7",
     "rxjs": "7",
     "tslib": "^2.0.0",
-    "typeorm": "^0.2.36"
+    "typeorm": "^0.2.36",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@babel/core": "7.12.13",

@@ -306,6 +306,27 @@
         }
       }
     },
+    "ui-auth": {
+      "root": "libs/ui/auth",
+      "sourceRoot": "libs/ui/auth/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/ui/auth/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/ui/auth"],
+          "options": {
+            "jestConfig": "libs/ui/auth/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "utils-frontend-shared-root-store": {
       "root": "libs/utils/frontend/shared/root-store",
       "sourceRoot": "libs/utils/frontend/shared/root-store/src",

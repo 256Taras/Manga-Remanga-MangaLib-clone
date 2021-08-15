@@ -1,1 +1,1 @@
-export * from './lib/data-access-frontend-shared';
+export * from './lib/hooks/use-auth.facade';
