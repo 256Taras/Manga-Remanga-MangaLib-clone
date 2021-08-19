@@ -10,9 +10,9 @@ import {
   Middleware
 } from '@reduxjs/toolkit';
 
-import { ISagaStore } from './interfaces/saga-store.interface';
-import { rootSagaWrapper } from './root-saga';
+
 import { IRootStoreOption } from './interfaces/root-store-option.interface';
+import { createInjectorsEnhancer } from 'redux-injectors';
 
 
 /**
@@ -33,7 +33,7 @@ export function rootStoreModule({ sagas, reducers }: IRootStoreOption):  Enhance
   /**
    * Combine all reducers in one
    */
-  const rootReducer = combineReducers(reducers);
+ // const rootReducer = combineReducers(reducers);
 
 
   /**
@@ -47,21 +47,42 @@ export function rootStoreModule({ sagas, reducers }: IRootStoreOption):  Enhance
    */
   const middleware = [...getDefaultMiddleware({ thunk: false }), sagaMiddleware];
 
+  function createReducer(injectedReducers = {}) {
+    return combineReducers({
+      ...injectedReducers,
+      ...reducers
+      // other non-injected reducers can go here...
+    })
+  }
+
+
+  const { run: runSaga } = sagaMiddleware;
+
+
+  const enhancers = [
+    createInjectorsEnhancer({
+      createReducer,
+      runSaga,
+    }),
+  ];
+
 
   /**
    * Add an extra parameter for applying middleware
    */
   const store = configureStore({
-    reducer: rootReducer,
-    middleware
+    reducer: createReducer(),
+    middleware,
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    //@ts-ignore
+    enhancers,
   });
 
 
   /**
    * Run  sagas on server
    */
-  (store as unknown as ISagaStore).sagaTask = sagaMiddleware.run(rootSagaWrapper(sagas));
-
+ // (store as unknown as ISagaStore).sagaTask()
 
   /**
    *  now return the store:
