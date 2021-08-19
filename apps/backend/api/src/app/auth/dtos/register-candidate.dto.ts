@@ -1,14 +1,15 @@
 import { IsEmail, IsEnum, IsNotEmpty, IsString, Length } from 'class-validator';
-import { UserGender } from '@manga/data-access/shared/interfaces';
+import { ISingUpRequest, UserGender } from '@manga/utils/shared/interfaces';
 import { PartialType } from '@nestjs/mapped-types';
 import { LoginUserDto } from './login-user.dto';
 
-export class RegisterCandidateDto extends PartialType(LoginUserDto)  {
-
+export class RegisterCandidateDto
+  extends PartialType(LoginUserDto)
+  implements ISingUpRequest
+{
   @IsString()
   @Length(2, 25)
   public username: string;
-
 
   @IsEmail()
   public email: string;
@@ -19,5 +20,4 @@ export class RegisterCandidateDto extends PartialType(LoginUserDto)  {
   @IsEnum(UserGender)
   @IsNotEmpty()
   public gender: UserGender;
-
 }

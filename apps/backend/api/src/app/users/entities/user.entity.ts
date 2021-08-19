@@ -1,9 +1,15 @@
-import { BeforeInsert, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
-import { IUser, UserGender } from '@manga/data-access/shared/interfaces';
+import {
+  BeforeInsert,
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
+import { IUser, UserGender } from '@manga/utils/shared/interfaces';
 
 @Entity('user')
 export class User implements IUser {
-
   @PrimaryGeneratedColumn()
   public id: number;
 
@@ -38,5 +44,4 @@ export class User implements IUser {
 
   @UpdateDateColumn({ name: 'updated_at' })
   public updatedAt: Date;
-
 }

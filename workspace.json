@@ -61,45 +61,70 @@
         }
       }
     },
-    "data-access-frontend-shared-root-store": {
-      "root": "libs/data-access-frontend-shared-root-store",
-      "sourceRoot": "libs/data-access-frontend-shared-root-store/src",
+    "data-access-frontend-shared-auth-store": {
+      "root": "libs/data-access/frontend/shared/auth-store",
+      "sourceRoot": "libs/data-access/frontend/shared/auth-store/src",
       "projectType": "library",
       "targets": {
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/data-access-frontend-shared-root-store/**/*.{ts,tsx,js,jsx}"
+              "libs/data-access/frontend/shared/auth-store/**/*.{ts,tsx,js,jsx}"
             ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/data-access-frontend-shared-root-store"],
+          "outputs": ["coverage/libs/data-access/frontend/shared/auth-store"],
           "options": {
-            "jestConfig": "libs/data-access-frontend-shared-root-store/jest.config.js",
+            "jestConfig": "libs/data-access/frontend/shared/auth-store/jest.config.js",
             "passWithNoTests": true
           }
         }
       }
     },
-    "data-access-shared-interfaces": {
-      "root": "libs/data-access/shared/interfaces",
-      "sourceRoot": "libs/data-access/shared/interfaces/src",
+    "data-access-frontend-shared-users-store": {
+      "root": "libs/data-access/frontend/shared/users-store",
+      "sourceRoot": "libs/data-access/frontend/shared/users-store/src",
       "projectType": "library",
       "targets": {
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/data-access/shared/interfaces/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/data-access/frontend/shared/users-store/**/*.{ts,tsx,js,jsx}"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/data-access/shared/interfaces"],
+          "outputs": ["coverage/libs/data-access/frontend/shared/users-store"],
           "options": {
-            "jestConfig": "libs/data-access/shared/interfaces/jest.config.js",
+            "jestConfig": "libs/data-access/frontend/shared/users-store/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "feature-frontend-shared-auth": {
+      "root": "libs/feature/frontend/shared/auth",
+      "sourceRoot": "libs/feature/frontend/shared/auth/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/feature/frontend/shared/auth/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/feature/frontend/shared/auth"],
+          "options": {
+            "jestConfig": "libs/feature/frontend/shared/auth/jest.config.js",
             "passWithNoTests": true
           }
         }
@@ -277,6 +302,92 @@
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/frontend/client-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "ui-auth": {
+      "root": "libs/ui/auth",
+      "sourceRoot": "libs/ui/auth/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/ui/auth/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/ui/auth"],
+          "options": {
+            "jestConfig": "libs/ui/auth/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "utils-frontend-shared-root-store": {
+      "root": "libs/utils/frontend/shared/root-store",
+      "sourceRoot": "libs/utils/frontend/shared/root-store/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/utils/frontend/shared/root-store/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/utils/frontend/shared/root-store"],
+          "options": {
+            "jestConfig": "libs/utils/frontend/shared/root-store/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "utils-shared-http": {
+      "root": "libs/utils/shared/http",
+      "sourceRoot": "libs/utils/shared/http/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/utils/shared/http/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/utils/shared/http"],
+          "options": {
+            "jestConfig": "libs/utils/shared/http/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "utils-shared-interfaces": {
+      "root": "libs/utils/shared/interfaces",
+      "sourceRoot": "libs/utils/shared/interfaces/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/utils/shared/interfaces/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/utils/shared/interfaces"],
+          "options": {
+            "jestConfig": "libs/utils/shared/interfaces/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }

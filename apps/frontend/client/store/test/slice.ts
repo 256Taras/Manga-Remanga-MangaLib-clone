@@ -1,19 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const userSlice = createSlice({
-  name: "user",
+  name: "test",
   initialState: {
     user:null
   },
   reducers: {
-    getUser() {},
-    setUser(state, action) {
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    getTest() {},
+    setTest(state, action) {
       console.log(action.payload);
       state.user = action.payload
     }
   }
 });
 
-export const { getUser, setUser } = userSlice.actions;
+export const { getTest,setTest } = userSlice.actions;
 
 export default userSlice.reducer;
