@@ -1,1 +1,1 @@
-export * from './lib/ui-auth';
+export * from './lib/Auth-form/index'
