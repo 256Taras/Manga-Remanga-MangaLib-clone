@@ -20,8 +20,8 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   ) {
     super({
       jwtFromRequest: ExtractJwt.fromExtractors([(request: Request) => {
-        return request?.cookies?.Authentication;
-      }]),secretOrKey: environment.jwt.accessTokenSecrete
+        return request.cookies.accessToken;
+      }]), secretOrKey: environment.jwt.accessTokenSecrete
     });
   }
 
@@ -30,6 +30,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
    * @param payload
    */
   public async validate(payload: ITokenPayload) {
+    console.log(payload);
     return this.userService.findOneById(payload.userId);
   }
 }

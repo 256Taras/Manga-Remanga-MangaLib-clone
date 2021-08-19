@@ -2,7 +2,7 @@ import { HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { HttpException } from '@nestjs/common/exceptions/http.exception';
 
-import { IUser } from '@manga/utils/shared/interfaces';
+import {  IUser } from '@manga/utils/shared/interfaces';
 import { IPasswordService } from '../interfaces/password-service.interface';
 import { PASSWORD_SERVICE } from '../utils/auth.constants';
 import { UserService } from '../../users/services/user.service';
@@ -10,6 +10,7 @@ import { RegisterCandidateDto } from '../dtos/register-candidate.dto';
 import { ITokenPayload } from '../interfaces/token-payload.interface';
 import { environment } from '../../../environments/environment';
 import { LoginUserDto } from '../dtos/login-user.dto';
+
 
 enum PostgresErrorCode {
   UniqueViolation = '23505',
@@ -22,7 +23,8 @@ export class AuthService {
     private readonly passwordService: IPasswordService,
     private readonly userService: UserService,
     private readonly jwtService: JwtService
-  ) {}
+  ) {
+  }
 
   /**
    * @description - registration of a   for the position user
@@ -30,29 +32,41 @@ export class AuthService {
 
   public async register(
     candidateData: RegisterCandidateDto
-  ): Promise<Omit<IUser, 'password'>> {
+  ): Promise<{ accessJwt: string; refreshJwt: string } > {
     try {
+
       const hashedPassword = await this.passwordService.getHash(
         candidateData.password
       );
 
       const createdUser = await this.userService.create({
         ...candidateData,
-        password: hashedPassword,
+        password: hashedPassword
       });
 
-      delete createdUser.password;
+console.log('id', createdUser.id)
+       if (createdUser) {
 
-      return createdUser;
+         const refreshJwt = await this.getRefreshToken(createdUser.id);
+
+         const accessJwt = await this.getAccessToken(createdUser.id);
+
+         await this.setCurrentRefreshToken(refreshJwt, createdUser.id);
+
+         return { accessJwt, refreshJwt };
+       }
+
     } catch (error) {
+      console.log(error);
       if (error?.code === PostgresErrorCode.UniqueViolation) {
         throw new HttpException(
           'User with that email already exists',
           HttpStatus.BAD_REQUEST
         );
       }
+
       throw new HttpException(
-        'Something went wrong',
+        'Something went wrong' + error ,
         HttpStatus.INTERNAL_SERVER_ERROR
       );
     }
@@ -64,7 +78,7 @@ export class AuthService {
    */
   public async login(
     candidate: LoginUserDto
-  ): Promise<{ accessJwt: string; refreshJwt: string; user: IUser }> {
+  ): Promise<{ accessJwt: string; refreshJwt: string }> {
     try {
       const user: IUser = await this.getAuthenticatedUser(
         candidate.email,
@@ -78,7 +92,7 @@ export class AuthService {
 
         await this.setCurrentRefreshToken(refreshJwt, user.id);
 
-        return { accessJwt, refreshJwt, user };
+        return { accessJwt, refreshJwt };
       }
     } catch (e) {
       throw new HttpException(
@@ -148,7 +162,7 @@ export class AuthService {
     const payload: ITokenPayload = { userId };
     return this.jwtService.sign(payload, {
       secret: environment.jwt.accessTokenSecrete,
-      expiresIn: `${environment.jwt.expiresInAccessToken}m`,
+      expiresIn: `${environment.jwt.expiresInAccessToken}s`
     });
   }
 
@@ -160,9 +174,10 @@ export class AuthService {
    */
   public async getRefreshToken(userId: number): Promise<string> {
     const payload: ITokenPayload = { userId };
+
     return this.jwtService.sign(payload, {
       secret: environment.jwt.refreshTokenSecret,
-      expiresIn: `${environment.jwt.expiresInRefreshToken}d`,
+      expiresIn: `${environment.jwt.expiresInRefreshToken}s`
     });
   }
 
@@ -181,7 +196,7 @@ export class AuthService {
       refreshToken
     );
     await this.userService.update(userId, {
-      refreshToken: currentHashedRefreshToken,
+      refreshToken: currentHashedRefreshToken
     });
   }
 
