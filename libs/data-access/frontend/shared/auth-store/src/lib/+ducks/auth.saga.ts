@@ -8,15 +8,15 @@ import {
   setIsSubmittingTrue,
   signInFailureAction,
   signInStartAction,
-  signInSuccessAction,
-  signOutStartAction,
+  signInSuccessAction, signOutFailureAction,
+  signOutStartAction, signOutSuccessAction,
   signUpFailureAction,
   signUpStartAction,
   signUpSuccessAction
 } from './auth.action';
 
 
-export function* fetchSignInRequest({ payload }: PayloadAction<ISingInRequest>) {
+export function* fetchSignInRequest({payload} : PayloadAction<ISingInRequest>) {
   try {
     yield put(setIsSubmittingTrue());
     const { data } = yield call(AuthApi.signIn, payload);
@@ -32,22 +32,26 @@ export function* fetchSignInRequest({ payload }: PayloadAction<ISingInRequest>) 
 
 export function* fetchSignOutRequest() {
   try {
-    const { data } = yield call(AuthApi.signOut);
-    if (data.message === 'success') {
-      yield put(signInSuccessAction());
+    yield put(setIsSubmittingTrue());
+    const { message } = yield call(AuthApi.signOut);
+    if (message === 'success') {
+      yield put(signOutSuccessAction());
     } else {
-      yield put(signInFailureAction('server error, try again'));
+      yield put(signOutFailureAction('server error, try again'));
     }
   } catch (error) {
-    yield put(signInFailureAction('Something went wrong, try again'));
+    yield put(signOutFailureAction('Something went wrong, try again'));
   }
 }
 
 export function* fetchSignUpRequest({ payload }: PayloadAction<ISingUpRequest>) {
   try {
-    const { data } = yield call(AuthApi.signUp, payload);
-    if (data.message === 'success') {
+    yield put(setIsSubmittingTrue());
+    const { message } = yield call(AuthApi.signUp, payload);
+    console.log(message);
+    if (message === 'success') {
       yield put(signUpSuccessAction());
+      console.log('put work');
     } else {
       yield put(signUpFailureAction('server error, try again'));
     }

@@ -5,17 +5,17 @@ import { IAuthFeatureState } from '../interfaces/auth-feature-state.interface';
 
 const authFeatureSelector = (state: IAuthFeatureState) => state.auth;
 
-const isSubmittingSelector = createSelector(
+export const isSubmittingSelector = createSelector(
   authFeatureSelector,
-  (auth: IAuthState): boolean => auth.isSubmitting
+  (auth: IAuthState): boolean => auth?.isSubmitting
 );
 
-const isLoggedInSelector = createSelector(
+export const isLoggedInSelector = createSelector(
   authFeatureSelector,
-  (auth: IAuthState): boolean | null => auth.isLoggedIn
+  (auth: IAuthState): boolean | null => auth?.isLoggedIn
 );
 
-const validationErrorsInSelector = createSelector(
+export const validationErrorsInSelector = createSelector(
   authFeatureSelector,
-  (auth: IAuthState): string | null => auth.validationErrors
+  (auth: IAuthState): string | null => auth?.validationErrors
 );
