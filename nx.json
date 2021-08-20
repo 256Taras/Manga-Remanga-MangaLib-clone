@@ -56,6 +56,9 @@
     "ui-auth": {
       "tags": ["type:lib", "scope:frontend-client", "lib-type:ui"]
     },
+    "ui-common": {
+      "tags": []
+    },
     "ui-main-layout": {
       "tags": []
     },
