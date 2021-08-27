@@ -1,1 +1,64 @@
-$test-var:green;
+@import "mixins";
+
+/**
+ * Color
+ */
+$dark-primary: #121212;
+$dark-secondary: #171717;
+
+$light-primary: rgba(255, 255, 255, .95);
+$light-secondary: #f0f0f0;
+
+/**
+shared
+ */
+
+$silver-light:  rgba(120,120,130, .07);
+
+/**
+ * Font
+ */
+
+$default-font-size: 1.6rem;
+$font-primary: "Roboto", sans-serif;
+$font-secondary: "Open Sans", sans-serif;
+$font-weight-this: 100;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+
+/**
+* Responsive breakpoint
+*/
+$xs-screen: 414px;
+$sm-screen: 600px;
+$md-screen: 768px;
+$lg-screen: 992px;
+$xl-screen: 1200px;
+$xxl-screen: 1400px;
+
+
+body {
+  --backgroundPrimary: #{$light-primary};
+  --backgroundSecondary: #{$light-secondary};
+  --backgroundTertiaryy: #{$light-secondary};
+  --foregroundPrimary: #{$dark-primary};
+  --foregroundSecondary: #{$dark-secondary};
+
+  --foregroundTertiary: #{$dark-secondary};
+
+
+
+  --siver-ligth: #{$silver-light};
+
+  @include whenDark {
+    --backgroundPrimary: #{$dark-primary};
+    --backgroundSecondary: #{$dark-secondary};
+    --foregroundPrimary: #{$light-primary};
+    --foregroundSecondary: #{$light-secondary};
+
+  }
+}
+

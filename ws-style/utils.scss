@@ -1,0 +1,36 @@
+@import "main";
+
+.container {
+  margin: 0 auto;
+  padding: 0 1.3rem;
+
+
+  @media screen and (min-width: $sm-screen) {
+    // 600px
+    max-width: 540px;
+  }
+
+  @media screen and (min-width: $md-screen) {
+    // 768px
+    max-width: 720px;
+  }
+
+  @media screen and (min-width: $lg-screen) {
+    // 992px
+    max-width: 960px;
+  }
+
+  @media screen and(min-width: $xl-screen) {
+    // 1200px
+    max-width: 1140px;
+  }
+
+  @media screen and(min-width: $xxl-screen) {
+    // 1400px
+    max-width: 1320px;
+  }
+}
+
+body {
+  background: var(--backgroundPrimary);
+}

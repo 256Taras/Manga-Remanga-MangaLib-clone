@@ -1,11 +1,12 @@
 /**
  * Import common style
  */
-@import "ws-style/main";
+@import "ws-style/utils";
 
+/**
+ * Import client abstracts
+ */
+@import "abstracts";
 
-.greenTestText {
-  color: $test-var;
-}
 
 
