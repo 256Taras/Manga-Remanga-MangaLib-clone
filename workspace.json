@@ -451,5 +451,5 @@
       }
     }
   },
-  "defaultProject": "frontend-client"
+  "defaultProject": "backend-api"
 }
