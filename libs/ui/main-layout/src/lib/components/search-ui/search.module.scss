@@ -1,0 +1,41 @@
+.form {
+  background: var(--backgroundSecondary);
+  width: 290px;
+  height: 43px;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  &:hover {
+    border: 1px solid #2461ff;
+    border-radius: 4px;
+    width: 291px;
+    height: 41px;
+  }
+
+  &:focus-within {
+    border: 2px solid #2461ff;
+    border-radius: 4px;
+    width: 292px;
+    height: 45px;
+  }
+
+}
+
+.input {
+  all: unset;
+  font: 16px system-ui;
+  height: 100%;
+  width: 100%;
+  padding: 6px 10px;
+
+  &::placeholder {
+    color: var(--foregroundPrimary);
+    opacity: 0.7;
+  }
+
+}
+
+
+

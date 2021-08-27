@@ -25,6 +25,8 @@
         "libs/feature/frontend/shared/auth/src/index.ts"
       ],
       "@manga/ui/auth": ["libs/ui/auth/src/index.ts"],
+      "@manga/ui/common": ["libs/ui/common/src/index.ts"],
+      "@manga/ui/main-layout": ["libs/ui/main-layout/src/index.ts"],
       "@manga/utils/frontend/shared/root-store": [
         "libs/utils/frontend/shared/root-store/src/index.ts"
       ],

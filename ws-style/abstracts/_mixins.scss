@@ -1,0 +1,26 @@
+@mixin ghost-button{
+    padding: 8px;
+    margin: 5px;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    &:hover {
+      background: var(--siver-ligth);
+      border-radius: 2px;
+    }
+}
+
+
+@mixin whenDark {
+  html.dark & {
+    @content;
+  }
+
+  // Ensure dark mode still works if JS is disabled (e.g. if you are pre-rendering your site)
+  @media (prefers-color-scheme: dark) {
+    & {
+      @content;
+    }
+  }
+}

@@ -27,8 +27,8 @@
     ]
   },
   "projects": {
-    "feature-frontend-shared-auth": {
-      "tags": ["type:lib", "scope:frontend-client", "lib-type:feature"]
+    "backend-api": {
+      "tags": ["scope:backend-api", "type:app"]
     },
     "data-access-frontend-shared-auth-store": {
       "tags": ["type:lib", "scope:shared", "lib-type:data-access"]
@@ -36,17 +36,8 @@
     "data-access-frontend-shared-users-store": {
       "tags": ["type:lib", "scope:shared", "lib-type:data-access"]
     },
-    "ui-auth": {
-      "tags": ["type:lib", "scope:frontend-client", "lib-type:ui"]
-    },
-    "utils-frontend-shared-root-store": {
-      "tags": ["scope:shared", "type:lib", "lib-type:utils"]
-    },
-    "utils-shared-http": {
-      "tags": ["scope:shared", "type:lib", "lib-type:utils"]
-    },
-    "utils-shared-interfaces": {
-      "tags": ["scope:shared", "type:lib", "lib-type:utils"]
+    "feature-frontend-shared-auth": {
+      "tags": ["type:lib", "scope:frontend-client", "lib-type:feature"]
     },
     "frontend-admin": {
       "tags": ["scope:frontend-admin", "type:app"]
@@ -61,8 +52,24 @@
     "frontend/client-e2e": {
       "tags": ["scope:frontend-client"],
       "implicitDependencies": ["frontend-client"]
-    },    "backend-api": {
-      "tags": ["scope:backend-api", "type:app"]
+    },
+    "ui-auth": {
+      "tags": ["type:lib", "scope:frontend-client", "lib-type:ui"]
+    },
+    "ui-common": {
+      "tags": ["type:lib", "scope:shared", "lib-type:ui"]
+    },
+    "ui-main-layout": {
+      "tags": ["type:lib", "scope:frontend-client", "lib-type:ui"]
+    },
+    "utils-frontend-shared-root-store": {
+      "tags": ["scope:shared", "type:lib", "lib-type:utils"]
+    },
+    "utils-shared-http": {
+      "tags": ["scope:shared", "type:lib", "lib-type:utils"]
+    },
+    "utils-shared-interfaces": {
+      "tags": ["scope:shared", "type:lib", "lib-type:utils"]
     }
   }
 }
