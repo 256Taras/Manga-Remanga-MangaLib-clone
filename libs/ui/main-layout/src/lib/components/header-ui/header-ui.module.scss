@@ -1,0 +1,17 @@
+.root {
+  height: 80px;
+  border-bottom: 1px solid  var(--siver-ligth);
+  border-top: 1px solid  var(--siver-ligth);
+  background: var(--backgroundPrimary);
+  color: var(--foregroundPrimary);
+}
+
+.icon {
+  height: 21px;
+  width: 21px;
+}
+
+.notificationSize{
+  height: 27px;
+  width: 27px;
+}

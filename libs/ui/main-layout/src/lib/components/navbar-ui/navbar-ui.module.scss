@@ -1,0 +1,19 @@
+
+.navItem {
+  font-size: 16px;
+  padding: 8px;
+  margin: 5px;
+
+
+  &:hover {
+    background: var(--backgroundSecondary);
+    border-radius: 5px;
+  }
+
+  text-decoration: none;
+}
+
+.logo {
+  height: 25px;
+  width: 25px;
+}

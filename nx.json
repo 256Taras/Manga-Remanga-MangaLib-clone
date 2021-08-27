@@ -57,10 +57,10 @@
       "tags": ["type:lib", "scope:frontend-client", "lib-type:ui"]
     },
     "ui-common": {
-      "tags": []
+      "tags": ["type:lib", "scope:shared", "lib-type:ui"]
     },
     "ui-main-layout": {
-      "tags": []
+      "tags": ["type:lib", "scope:frontend-client", "lib-type:ui"]
     },
     "utils-frontend-shared-root-store": {
       "tags": ["scope:shared", "type:lib", "lib-type:utils"]

@@ -1,35 +1,43 @@
-
-
-
 import { AppProps } from 'next/app';
+import useDarkMode from 'use-dark-mode';
+import { useEffect } from 'react';
 import Head from 'next/head';
 
 
-import { ReactComponent as NxLogo } from '../public/nx-logo-white.svg';
+import { LayoutUi } from '@manga/ui/main-layout';
 import '../styles/styles.scss';
 import { reduxNextWrapper } from '../store';
 
 function CustomApp({ Component, pageProps }: AppProps) {
+  const DARK_CLASS = 'dark';
+
+
+  const { value } = useDarkMode(false);
+
+  useEffect(() => {
+    if (value) {
+      document.documentElement.classList.add(DARK_CLASS);
+    } else {
+      document.documentElement.classList.remove(DARK_CLASS);
+    }
+  }, [value]);
+
   return (
     <>
       <Head>
-        <title>Welcome to frontend/client!</title>
+        <title>Manga App</title>
+        <link rel='icon'
+              href='https://img1.freepng.ru/20180612/gar/kisspng-uchiha-clan-sasuke-uchiha-obito-uchiha-apple-you-b-sharingan-5b2085e807ff35.9521175615288580880328.jpg' />
       </Head>
-      <div className="app">
-        <header className="flex">
-          <NxLogo width="75" height="50" />
-          <h1>Welcome to frontend/client!</h1>
-        </header>
+      <LayoutUi>
         <main>
           <Component {...pageProps} />
         </main>
-      </div>
+      </LayoutUi>
+
     </>
   );
 }
-
-
-
 
 
 export default reduxNextWrapper.withRedux(CustomApp);
