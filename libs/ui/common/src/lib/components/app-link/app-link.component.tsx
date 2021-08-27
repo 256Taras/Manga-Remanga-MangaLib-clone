@@ -7,9 +7,11 @@ export const AppLink: FC<appLinkProps> = ({ children, href, className, onClick }
 
   return (
     <Link href={{ pathname: href }}>
-      <a className={className} onClick={onClick}>
-        {children}
-      </a>
+      <div className={className}>
+        <a onClick={onClick}>
+          {children}
+        </a>
+      </div>
     </Link>
   );
 };
