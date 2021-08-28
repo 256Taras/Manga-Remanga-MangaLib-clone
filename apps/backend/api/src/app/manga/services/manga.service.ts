@@ -34,7 +34,7 @@ export class MangaService {
     return this.mangaRepository.find();
   }
 
-  async findOne(id: number):Promise<IManga> {
+  async findOne(id: number): Promise<IManga> {
     try {
       const manga = await this.mangaRepository
         .createQueryBuilder('manga')
@@ -56,12 +56,13 @@ export class MangaService {
     }
   }
 
-  update(id: number, updateMangaDto: UpdateMangaDto) {
-    return `This action updates a #${id} manga`;
+  public async update(id: number, data: UpdateMangaDto) {
+    await this.mangaRepository.update({ id }, data);
+    return await this.mangaRepository.findOne({ id });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} manga`;
+  public async remove(id: number) {
+    return await this.mangaRepository.delete(+id);
   }
 
 

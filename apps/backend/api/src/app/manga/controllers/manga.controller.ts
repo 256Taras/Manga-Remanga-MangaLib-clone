@@ -22,6 +22,8 @@ export class MangaController {
     return this.mangaService.recommendations();
   }
 
+
+
   @Get(':id')
   getOne(@Param('id') id: string) {
     return this.mangaService.findOne(+id);
