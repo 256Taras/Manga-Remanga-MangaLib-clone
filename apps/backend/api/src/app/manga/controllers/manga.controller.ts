@@ -17,13 +17,13 @@ export class MangaController {
     return this.mangaService.create(file, dto);
   }
 
-  @Get()
-  findAll() {
-    return this.mangaService.findAll();
+  @Get('recommendations')
+  listOfRecommendations() {
+    return this.mangaService.recommendations();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  getOne(@Param('id') id: string) {
     return this.mangaService.findOne(+id);
   }
 

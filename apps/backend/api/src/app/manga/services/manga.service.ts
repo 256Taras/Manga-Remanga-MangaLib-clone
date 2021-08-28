@@ -6,6 +6,7 @@ import { Repository } from 'typeorm';
 import { Manga } from '../entities/manga.entity';
 import { MANGA_REPOSITORY } from '../utils/manga.constants';
 import { UploadService } from '../../upload/services/upload.service';
+import { IManga } from '@manga/utils/shared/interfaces';
 
 @Injectable()
 export class MangaService {
@@ -29,12 +30,30 @@ export class MangaService {
     }
   }
 
-  findAll() {
-    return `This action returns all manga`;
+  public async recommendations(): Promise<IManga[]> {
+    return this.mangaRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} manga`;
+  async findOne(id: number):Promise<IManga> {
+    try {
+      const manga = await this.mangaRepository
+        .createQueryBuilder('manga')
+        .where('id = :id', { id })
+        .getOne();
+
+      manga.viewsCount++;
+
+      await this.mangaRepository
+        .createQueryBuilder('manga')
+        .update(Manga)
+        .set({ viewsCount: manga.viewsCount })
+        .where('id = :id', { id })
+        .execute();
+
+      return manga;
+    } catch (e) {
+      throw new HttpException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
   }
 
   update(id: number, updateMangaDto: UpdateMangaDto) {
@@ -44,4 +63,6 @@ export class MangaService {
   remove(id: number) {
     return `This action removes a #${id} manga`;
   }
+
+
 }
