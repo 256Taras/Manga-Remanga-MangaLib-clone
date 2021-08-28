@@ -4,3 +4,5 @@ export * from './lib/auth/sing-in-request.interface';
 export * from './lib/auth/sing-up-request.interface';
 export * from './lib/auth/auth-responce.type';
 export * from './lib/entities/manga/manga.interface'
+export * from './lib/entities/chapters/chapter.interface'
+export * from './lib/entities/chapters/chapter-images.interface'

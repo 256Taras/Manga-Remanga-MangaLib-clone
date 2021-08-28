@@ -2,55 +2,61 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinTable,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn
-} from "typeorm";
-import { IManga } from '@manga/utils/shared/interfaces';
+} from 'typeorm';
 
+import { IManga } from '@manga/utils/shared/interfaces';
+import { Chapter } from '../../chapters/entities/chapter.entity';
 
 
 @Entity('manga')
-export class Manga implements IManga{
+export class Manga implements IManga {
+
   @PrimaryGeneratedColumn()
-  id: number;
+  public id: number;
 
-  @Column({default:null})
-  imgUrl: string | null;
-
-  @Column()
-  title!: string;
+  @Column({ default: null })
+  public imgUrl: string | null;
 
   @Column()
-  englishTitle!: string;
+  public title!: string;
 
   @Column()
-  originalTitle!: string;
+  public englishTitle!: string;
 
   @Column()
-  author!: string;
-
-  @Column("text")
-  description!: string;
+  public originalTitle!: string;
 
   @Column()
-  year!: number;
+  public author!: string;
 
-  @Column({default:0})
-  viewsCount:number
+  @Column('text')
+  public description!: string;
 
-  @Column({default:0})
-  chapterCount: number;
+  @Column()
+  public year!: number;
 
-  @Column({default:0})
-  ratingCount: number;
+  @Column({ default: 0 })
+  public viewsCount: number;
 
+  @Column({ default: 0 })
+  public chapterCount: number;
 
-  @CreateDateColumn({name: 'created_at'})
-  createdAt: Date;
+  @Column({ default: 0 })
+  public ratingCount: number;
 
-  @UpdateDateColumn({name: 'updated_at'})
-  updatedAt: Date;
+  @CreateDateColumn({ name: 'created_at' })
+  public createdAt: Date;
 
+  @UpdateDateColumn({ name: 'updated_at' })
+  public updatedAt: Date;
+
+  @OneToMany(() => Chapter, chapter => chapter.manga, { cascade: true })
+  @JoinTable()
+  public chapters: Chapter[];
 }
 
 

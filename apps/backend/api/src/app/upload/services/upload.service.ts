@@ -8,11 +8,12 @@ import * as uuid from 'uuid';
 @Injectable()
 export class UploadService {
 
-  public async createMangaCover(file, mangaName):Promise<{cover:string}>  {
+  public async createMangaCover(file, mangaName): Promise<{ cover: string }> {
 
     try {
 
       const fileExtension = this.fileExt(file);
+
       const fileName = mangaName + uuid.v4() + '.' + fileExtension;
 
       const filePath = path.resolve(__dirname, '..', '..', 'static', 'manga-cover', mangaName);
@@ -25,7 +26,39 @@ export class UploadService {
     }
   }
 
-  private async createFileDirectory(file, filePath, fileName):Promise<void> {
+  public async createChapterImages(files, mangaName, chapterNumber):Promise<{imageLink:string;imageNumber:number}[]> {
+    try {
+      const chapterPhoto = [];
+
+      for (const file of files) {
+        const index: number = files.indexOf(file);
+
+        const fileExtension = this.fileExt(file);
+
+        const fileName = mangaName + '-' + chapterNumber + uuid.v4() + '.' + fileExtension;
+
+        const filePath = path.resolve(__dirname, '..', '..', 'static', mangaName, chapterNumber);
+
+
+        await this.createFileDirectory(file, filePath, fileName);
+
+
+        const fileResponse = {
+          imageLink: mangaName + '/' + chapterNumber + '/' + fileName,
+          imageNumber: index + 1
+        };
+        chapterPhoto.push(fileResponse);
+      }
+
+
+      return chapterPhoto;
+    } catch (e) {
+      throw new HttpException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+  }
+
+  private async createFileDirectory(file, filePath, fileName): Promise<void> {
     fs.access(filePath, function(err) {
       if (err && err.code === 'ENOENT') {
         fs.mkdir(filePath, { recursive: true }, (err) => {
@@ -39,10 +72,9 @@ export class UploadService {
         });
       }
     });
-
   }
 
-  private fileExt(file):string {
+  private fileExt(file): string {
     return file.originalname.split('.').pop();
   }
 
