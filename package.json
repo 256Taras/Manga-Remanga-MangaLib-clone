@@ -47,6 +47,7 @@
     "@nrwl/next": "12.5.7",
     "@reduxjs/toolkit": "^1.6.1",
     "@types/cookie-parser": "^1.4.2",
+    "@types/multer": "^1.4.7",
     "@types/passport-jwt": "^3.0.6",
     "@types/passport-local": "^1.0.34",
     "@types/redux-saga": "^0.10.5",
