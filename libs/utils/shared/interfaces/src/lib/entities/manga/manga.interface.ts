@@ -67,5 +67,5 @@ export interface IManga {
   /**
    * Date created  updated
    */
-  updatedAt: Date;
+  updatedAt: Date | string;
 }
