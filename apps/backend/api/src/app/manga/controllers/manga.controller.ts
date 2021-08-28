@@ -1,15 +1,20 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors, UploadedFile } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
+
+
 import { MangaService } from '../services/manga.service';
 import { CreateMangaDto } from '../dto/create-manga.dto';
 import { UpdateMangaDto } from '../dto/update-manga.dto';
 
 @Controller('manga')
 export class MangaController {
-  constructor(private readonly mangaService: MangaService) {}
+  constructor(private readonly mangaService: MangaService) {
+  }
 
   @Post()
-  public create(@Body() createMangaDto: CreateMangaDto) {
-    return this.mangaService.create(createMangaDto);
+  @UseInterceptors(FileInterceptor('manga-cover'))
+  public create(@UploadedFile() file, @Body() dto: CreateMangaDto) {
+    return this.mangaService.create(file, dto);
   }
 
   @Get()

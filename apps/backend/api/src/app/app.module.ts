@@ -7,6 +7,8 @@ import { environment } from '../environments/environment';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { User } from './users/entities/user.entity';
+import { MangaModule } from './manga/manga.module';
+import { Manga } from './manga/entities/manga.entity';
 
 
 
@@ -14,10 +16,11 @@ import { User } from './users/entities/user.entity';
   imports: [
     TypeOrmModule.forRoot({
       ...environment.databaseConnection,
-      entities:[User]
+      entities:[User,Manga]
     }),
     AuthModule,
-    UsersModule
+    UsersModule,
+    MangaModule
   ],
   controllers: [AppController],
   providers: [AppService]

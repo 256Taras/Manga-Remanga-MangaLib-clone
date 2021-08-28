@@ -12,7 +12,8 @@ export class UserService {
   constructor(
     @Inject(USER_REPOSITORY)
     private readonly usersRepository: Repository<User>
-  ) {}
+  ) {
+  }
 
   public async create(candidateData: CreateUserDto) {
     const candidate = await this.usersRepository.create(candidateData);
